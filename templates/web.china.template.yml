@@ -3,6 +3,8 @@ hooks:
     - exec:
        cmd:
          - gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+         - cd /var/www/discourse && sed -i 's/github.com/hub.fastgit.org/g' Gemfile
+         - cd /var/www/discourse && bundle config unset deployment && bundle install
 
   before_bundle_exec:
     - exec:
