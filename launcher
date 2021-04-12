@@ -654,7 +654,7 @@ run_bootstrap() {
 
   run_command="cd /pups &&"
   if [[ ! "false" =  $update_pups ]]; then
-    run_command="$run_command git pull && git checkout $pups_version &&"
+    run_command="$run_command git remote set-url origin https://hub.fastgit.org/discourse/pups.git && git pull && git checkout $pups_version &&"
   fi
   run_command="$run_command /pups/bin/pups --stdin"
 
