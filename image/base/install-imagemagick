@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-# version check: https://github.com/ImageMagick/ImageMagick/releases
+# version check: https://hub.fastgit.org/ImageMagick/ImageMagick/releases
 IMAGE_MAGICK_VERSION="7.0.11-6"
 IMAGE_MAGICK_HASH="8adc1605784653b078572b825e8cd1d3d54f8a1b4ba86b32ca253c038f7e4c37"
 
-# version check: https://github.com/strukturag/libheif/releases
+# version check: https://hub.fastgit.org/strukturag/libheif/releases
 LIBHEIF_VERSION="1.11.0"
 LIBHEIF_HASH="993c3320e179b8fdce983e3a7e96615af3830077be6b0ab28bfa25579df08d26"
 
@@ -42,7 +42,7 @@ rm -rf build_aom
 
 # Build and install libheif
 cd $WDIR
-wget -O $WDIR/libheif.tar.gz "https://github.com/strukturag/libheif/archive/v$LIBHEIF_VERSION.tar.gz"
+wget -O $WDIR/libheif.tar.gz "https://hub.fastgit.org/strukturag/libheif/archive/v$LIBHEIF_VERSION.tar.gz"
 sha256sum $WDIR/libheif.tar.gz
 echo "$LIBHEIF_HASH $WDIR/libheif.tar.gz" | sha256sum -c
 tar -xzvf $WDIR/libheif.tar.gz
@@ -52,7 +52,7 @@ cd libheif-$LIBHEIF_VERSION
 make && make install
 
 # Build and install ImageMagick
-wget -O $WDIR/ImageMagick.tar.gz "https://github.com/ImageMagick/ImageMagick/archive/$IMAGE_MAGICK_VERSION.tar.gz"
+wget -O $WDIR/ImageMagick.tar.gz "https://hub.fastgit.org/ImageMagick/ImageMagick/archive/$IMAGE_MAGICK_VERSION.tar.gz"
 sha256sum $WDIR/ImageMagick.tar.gz
 echo "$IMAGE_MAGICK_HASH $WDIR/ImageMagick.tar.gz" | sha256sum -c
 IMDIR=$WDIR/$(tar tzf $WDIR/ImageMagick.tar.gz --wildcards "ImageMagick-*/configure" |cut -d/ -f1)
